@@ -48,7 +48,7 @@ func main() {
 
         switch operation {
         case "add":
-            result = strconv.Itoa(a + b)
+            result = strconv.Itoa(a  +b)
         case "subtract":
             result = strconv.Itoa(a - b)
         case "multiply":
