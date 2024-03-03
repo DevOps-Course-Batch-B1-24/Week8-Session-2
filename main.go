@@ -3,6 +3,7 @@ package main
 import (
     "github.com/gin-gonic/gin"
     "html/template"
+    "math"
     "net/http"
     "strconv"
 )
@@ -27,6 +28,7 @@ func main() {
                 <button type="submit" name="operation" value="subtract">Subtraction</button>
                 <button type="submit" name="operation" value="multiply">Multiplication</button>
                 <button type="submit" name="operation" value="divide">Division</button>
+                <button type="submit" name="operation" value="sqrt">Square Root</button>
             </form>
             <br>
             {{if .Result}}
@@ -48,7 +50,7 @@ func main() {
 
         switch operation {
         case "add":
-            result = strconv.Itoa(a  +b)
+            result = strconv.Itoa(a + b)
         case "subtract":
             result = strconv.Itoa(a - b)
         case "multiply":
@@ -59,6 +61,8 @@ func main() {
             } else {
                 result = strconv.Itoa(a / b)
             }
+        case "sqrt":
+            result = strconv.FormatFloat(math.Sqrt(float64(a)), 'f', -1, 64)
         }
 
         c.HTML(http.StatusOK, "", gin.H{"Result": result})
