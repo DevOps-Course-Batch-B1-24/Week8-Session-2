@@ -5,7 +5,7 @@ pipeline {
         PATH = "$PATH:/usr/local/go/bin"
     }
         
-        
+        stages {
         stage('Build') {
             steps {
                sh 'go build'
